@@ -1,0 +1,199 @@
+{
+	"info": {
+		"_postman_id": "30c61b92-8c2d-4de0-89f6-0554c194ea0b",
+		"name": "embarcados",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "rfid/nfc module",
+			"item": [
+				{
+					"name": "register tag rfid",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ0Z2ZlaW5AZ21haWwuY29tIiwibmFtZSI6IlRpYWdvIEZlaW4iLCJpYXQiOjE2MTU4NTA1NDB9.z8MourdNRRNHy0L0PlMMD66mWwZBF1KL2KSJAZv2m1c",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"tag_id\": \"atagid\",\n    \"user_id\": \"tiago_teste\",\n    \"pet_type\": \"dog\",\n    \"pet_name\": \"astolfo_34\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/rfid/registerPet",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"rfid",
+								"registerPet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "requestWrite",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\": \"tiago_teste\",\n    \"pet_type\": \"gato\",\n    \"pet_name\": \"tito lindo\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/rfid/requestWrite",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"rfid",
+								"requestWrite"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "meals",
+			"item": [
+				{
+					"name": "create meals",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\": \"tiago_teste\",\n    \"hours\": [18],\n    \"minutes\": [26],\n    \"meal_size_grams\": 10\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/meals/createMeal",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"meals",
+								"createMeal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "manual trigger",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\": \"tiago_teste\",\n    \"meal_size_grams\": 50\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/meals/manualTrigger",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"meals",
+								"manualTrigger"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fetchMeals",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\": \"tiago_teste\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/meals/fetchMeals",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"meals",
+								"fetchMeals"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "test",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"testao\": \"hihiihihihiih\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "192.168.122.1:3000/",
+					"host": [
+						"192",
+						"168",
+						"122",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
