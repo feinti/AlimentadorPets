@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microservices-okteto-backend-login
+spec:
+  selector:
+    matchLabels:
+      app: microservices-okteto-backend-login
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: microservices-okteto-backend-login
+    spec:
+      containers:
+      - name: microservices-okteto-backend-login
+        image: tgfein/microservices-okteto-backend-login:latest
+        ports:
+        - containerPort: 3000
