@@ -5,12 +5,12 @@ import sys
 import RPi.GPIO as GPIO
 from hx711 import HX711
 
-referenceUnitA = 1143
-referenceUnitB = 1143
+referenceUnitA = 1117
+referenceUnitB = 276
 
 class LoadCellModule:
 
-    def __init__(self, dout, pd_sck):
+    def __init__(self, dout, pd_sck, offsetA=None, offsetB=None):
         self.PD_SCK = pd_sck
         self.DOUT = dout
 
@@ -20,8 +20,16 @@ class LoadCellModule:
         self.hx.set_reference_unit_A(referenceUnitA)
         self.hx.set_reference_unit_B(referenceUnitB)
 
-        self.reset_and_tare_A()
-        # self.reset_and_tare_B()
+        if offsetA is not None:
+            self.hx.reset()
+            self.hx.set_offset_A(offsetA)
+        else:
+            self.reset_and_tare_A()
+        if offsetB is not None:
+            self.hx.reset()
+            self.hx.set_offset_B(offsetB)
+        else:
+            self.reset_and_tare_B()
 
         # Think about whether this is necessary.
         time.sleep(1)
@@ -40,5 +48,5 @@ class LoadCellModule:
         return max(0, round(self.hx.get_weight_A(num_reads)))
 
     def get_weight_B(self, num_reads=25):
-        return max(0, round(self.hx.get_weight_B(num_reads)))
+        return round(self.hx.get_weight_B(num_reads))
 

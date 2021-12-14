@@ -14,6 +14,13 @@ class RfidModule:
         time.sleep(1)
 
     def read(self):
+        id, text = self.reader.read()
+        if id is None: return ''
+        # print(id)
+        # print(text)
+        return text
+
+    def read_no_block(self):
         id, text = self.reader.read_no_block()
         if id is None: return ''
         # print(id)
@@ -28,3 +35,4 @@ class RfidModule:
         except Exception as e:
             print(f'Error on write rfid: {e}')
             return None, None
+
